@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleForTest", "SimpleForTest\SimpleForTest.csproj", "{2095E729-7EC4-4E19-BB82-940604CE5CD6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickRandomCards", "PickRandomCards\PickRandomCards.csproj", "{5A01F22E-670F-4926-A785-BAC5E0B0950E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2095E729-7EC4-4E19-BB82-940604CE5CD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2095E729-7EC4-4E19-BB82-940604CE5CD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2095E729-7EC4-4E19-BB82-940604CE5CD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A01F22E-670F-4926-A785-BAC5E0B0950E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A01F22E-670F-4926-A785-BAC5E0B0950E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A01F22E-670F-4926-A785-BAC5E0B0950E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A01F22E-670F-4926-A785-BAC5E0B0950E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
