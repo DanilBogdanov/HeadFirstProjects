@@ -4,7 +4,8 @@ namespace PickRandomCards
 {
     class CardsPicker
     {
-        static Random random = new();
+        static Random random = new Random();
+
         public static string[] PickSomeCards(int numberOfCards)
         {
             string[] pickedCards = new string[numberOfCards];
@@ -12,10 +13,11 @@ namespace PickRandomCards
             for (int i = 0; i < numberOfCards; i++)
             {
                 pickedCards[i] = RandomValue() + " of " + RandomSuit();
+                RandomSuit();
             }
             return pickedCards;
         }
-
+        
         static string RandomSuit()
         {
             int value = random.Next(1, 5);
