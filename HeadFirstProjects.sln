@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickACardUI", "PickACardUI\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AbilityScoreTester", "AbilityScoreTester\AbilityScoreTester.csproj", "{3BDF3C34-E572-4597-880E-57C0774F259E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwordDamage_ConsoleApp", "SwordDamage_ConsoleApp\SwordDamage_ConsoleApp.csproj", "{FDB0E130-C796-4EE0-AC4D-218FB1061F99}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{3BDF3C34-E572-4597-880E-57C0774F259E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BDF3C34-E572-4597-880E-57C0774F259E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BDF3C34-E572-4597-880E-57C0774F259E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDB0E130-C796-4EE0-AC4D-218FB1061F99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDB0E130-C796-4EE0-AC4D-218FB1061F99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDB0E130-C796-4EE0-AC4D-218FB1061F99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDB0E130-C796-4EE0-AC4D-218FB1061F99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
