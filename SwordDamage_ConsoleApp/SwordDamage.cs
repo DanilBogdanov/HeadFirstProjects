@@ -25,6 +25,7 @@
             {
                 MagicMultiplier = 1M;
             }
+            CalculateDamage();
         }
 
         public void SetFlaming(bool isFlaming)
