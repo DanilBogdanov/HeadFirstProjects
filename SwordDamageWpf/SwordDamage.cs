@@ -4,13 +4,14 @@ namespace SwordDamage_ConsoleApp
 {
     public class SwordDamage
     {
-        public const int BASE_DAMAGE = 3;
-        public const int FLAME_DAMAGE = 2;
+        private const int BASE_DAMAGE = 3;
+        private const int FLAME_DAMAGE = 2;
 
         public int Roll;
         private decimal MagicMultiplier = 1M;
         private int FlamingDamage = 0;
         public int Damage;
+        
 
         private void CalculateDamage()
         {
