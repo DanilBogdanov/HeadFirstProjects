@@ -5,7 +5,7 @@ namespace PaintballGun
 {
     public class PaintballGun
     {
-        public int MagazineSize { get; private set; }
+        public int MagazineSize { get; private set; } = 16;
         private int balls = 0;
 
         public int Balls
@@ -22,7 +22,17 @@ namespace PaintballGun
             }
         }
 
-        public int BallsLoaded { get; private set; } 
+        public int BallsLoaded { get; private set; }
+
+        public PaintballGun(int balls, int magazineSize, bool loaded)
+        {
+            this.balls = balls;
+            MagazineSize = magazineSize;
+            if (!loaded)
+            {
+                Reload();
+            }
+        }
 
         public bool IsEmpty()
         {

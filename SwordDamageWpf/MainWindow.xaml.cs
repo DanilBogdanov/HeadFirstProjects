@@ -10,28 +10,28 @@ namespace SwordDamageWpf
     /// </summary>
     public partial class MainWindow
     {
-        Random random = new Random();
-        SwordDamage swordDamage = new SwordDamage();
-
+        private Random random = new Random();
+        private SwordDamage swordDamage;
+        
         public MainWindow()
         {
             InitializeComponent();
-            swordDamage.SetFlaming(false);
-            swordDamage.SetMagic(false);
-            
+            int roll = random.Next(1, 7) + random.Next(1, 7) + random.Next(1, 7);
+            swordDamage = new SwordDamage(roll);
+            DisplayDamage();
         }
 
-        void RollDice()
+        private void RollDice()
         {
             swordDamage.Roll = random.Next(1, 7) + random.Next(1, 7) + random.Next(1, 7);
-            swordDamage.SetFlaming(flaming.IsChecked.Value);
-            swordDamage.SetMagic(magic.IsChecked.Value);
+            swordDamage.Flaming = flaming.IsChecked.Value;
+            swordDamage.Magic = magic.IsChecked.Value;
             DisplayDamage();
         }
 
         void DisplayDamage()
         {
-            damage.Text = "Rolled " + swordDamage.Roll + "for " + swordDamage.Damage + " HP";
+            damage.Text = $"Rolled {swordDamage.Roll} for {swordDamage.Damage} HP";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -41,25 +41,25 @@ namespace SwordDamageWpf
 
         private void Flaming_Checked(object sender, RoutedEventArgs e)
         {
-            swordDamage.SetFlaming(true);
+            swordDamage.Flaming = true;
             DisplayDamage();
         }
 
         private void Flaming_Unchecked(object sender, RoutedEventArgs e)
         {
-            swordDamage.SetFlaming(false);
+            swordDamage.Flaming = false;
             DisplayDamage();
         }
 
         private void Magic_Checked(object sender, RoutedEventArgs e)
         {
-            swordDamage.SetMagic(true);
+            swordDamage.Magic = true;
             DisplayDamage();
         }
 
         private void Magic_Unchecked(object sender, RoutedEventArgs e)
         {
-            swordDamage.SetMagic(false);
+            swordDamage.Magic = false;
             DisplayDamage();
         }
     }

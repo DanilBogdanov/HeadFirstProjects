@@ -6,7 +6,13 @@ namespace PaintballGun
     {
         static void Main(string[] args)
         {
-            PaintballGun gun = new PaintballGun();
+            int numberOfBalls = ReadInt(20, "Number of balls");
+            int magazineSize = ReadInt(16, "Magazine size");
+            Console.Write("Loaded [false]: ");
+            bool isLoaded = bool.TryParse(Console.ReadLine(), out bool parsedLoaded);
+            
+            PaintballGun gun = new PaintballGun(numberOfBalls, magazineSize, isLoaded);
+            
             while (true)
             {
                 Console.WriteLine($"{gun.Balls} balls, {gun.BallsLoaded} loaded");
@@ -35,6 +41,20 @@ namespace PaintballGun
                 {
                     return;
                 }
+            }
+
+        }
+
+        private static int ReadInt(int defaultNumber, string promt)
+        {
+            Console.WriteLine($"{promt} [default:{defaultNumber}]");
+            if (int.TryParse(Console.ReadLine(), out int number))
+            {
+                return number;
+            }
+            else
+            {
+                return defaultNumber;
             }
         }
     }
