@@ -3,57 +3,10 @@
     /// <summary>
     /// Calculate sword damage with magic and flame
     /// </summary>
-    public class SwordDamage
+    public class SwordDamage : WeaponDamage
     {
-        private const int BASE_DAMAGE = 3;
-        private const int FLAME_DAMAGE = 2;
-
-        private int _roll;
-
-        /// <summary>
-        /// Value of the 3d6 roll.
-        /// </summary>
-        public int Roll
-        {
-            get => _roll;
-            set
-            {
-                _roll = value;
-                CalculateDamage();
-            }
-        }
-
-        private bool _flaming;
-
-        /// <summary>
-        /// True if the sword is flaming.
-        /// </summary>
-        public bool Flaming
-        {
-            get => _flaming;
-            set
-            {
-                _flaming = value;
-                CalculateDamage();
-            }
-        }
-
-        private bool _magic;
-
-        /// <summary>
-        /// True if the sword is magic.
-        /// </summary>
-        public bool Magic
-        {
-            get => _magic;
-            set
-            {
-                _magic = value;
-                CalculateDamage();
-            }
-        }
-
-        public int Damage { get; private set; }
+        private const int BaseDamage = 3;
+        private const int FlameDamage = 2;
 
         /// <summary>
         /// Initialize instance of SwordDamage with roll
@@ -61,18 +14,17 @@
         /// <param name="roll"></param>
         public SwordDamage(int roll)
         {
-            _roll = roll;
-            CalculateDamage();
+            Roll = roll;
         }
 
-        private void CalculateDamage()
+        protected override void CalculateDamage()
         {
             //Magic damage if true is 1.75 otherwise is 1
             decimal magicDamage = Magic ? 1.75M : 1M;
             //Flaming damage if true is const FLAME_DAMAGE otherwise 0
-            int flameDamage = Flaming ? FLAME_DAMAGE : 0;
+            int flameDamage = Flaming ? FlameDamage : 0;
 
-            Damage = (int) (Roll * magicDamage) + BASE_DAMAGE + flameDamage;
+            Damage = (int) (Roll * magicDamage) + BaseDamage + flameDamage;
         }
     }
 }
