@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace SimpleForTest
 {
-    class A
+    abstract class A
     {
+        public static int count = 0;
         public void MPub()
         {
 

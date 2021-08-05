@@ -32,7 +32,7 @@ namespace BeehiveManagementSystem
             }            
         }
 
-        private static void CollectNectar(float amount)
+        internal static void CollectNectar(float amount)
         {
             //wtf
             if (amount > 0)
@@ -41,7 +41,7 @@ namespace BeehiveManagementSystem
             }
         }
 
-        private static void ConvertNectarToHoney(float amount)
+        internal static void ConvertNectarToHoney(float amount)
         {
             if (nectar >= amount)
             {

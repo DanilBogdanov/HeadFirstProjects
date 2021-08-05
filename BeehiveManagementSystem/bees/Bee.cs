@@ -1,22 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BeehiveManagementSystem
+﻿namespace BeehiveManagementSystem.bees
 {
     abstract class Bee
     {
-        public abstract float CostPerShift { get; }
-        public string Job { get; }
+        protected abstract float CostPerShift { get; }
+        private string Job { get; }
 
         public Bee(string job)
         {
             Job = job;
         }
 
-        protected void WorkTheNextShift()
+        internal void WorkTheNextShift()
         {
             if (HoneyVault.ConsumerHoney(CostPerShift))
             {

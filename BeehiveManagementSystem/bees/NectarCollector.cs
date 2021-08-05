@@ -8,16 +8,18 @@ namespace BeehiveManagementSystem.bees
 {
     class NectarCollector : Bee
     {
-        public override float CostPerShift => 1.95f;
+        internal static int Count { get; private set; }
+        protected override float CostPerShift => 1.95f;
+        private const float NECTAR_COLLECTED_PER_SHIFT = 33.25f;
 
         public NectarCollector() : base("Nectar Collector")
         {
-
+            Count++;
         }
 
         protected override void DoJob()
         {
-            throw new NotImplementedException();
+            HoneyVault.CollectNectar(NECTAR_COLLECTED_PER_SHIFT);
         }
     }
 }

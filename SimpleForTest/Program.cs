@@ -7,9 +7,12 @@ namespace SimpleForTest
     {
         static void Main(string[] args)
         {
-            A a = new();
+            C c = new();
             B b = new();
-            
+            C.count = 2;
+            B.count = 5;
+            Console.WriteLine($"C.count={C.count}");
+            Console.WriteLine($"B.count={B.count}");
         }
     }
 }

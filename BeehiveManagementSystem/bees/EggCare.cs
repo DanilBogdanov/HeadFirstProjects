@@ -8,17 +8,20 @@ namespace BeehiveManagementSystem.bees
 {
     class EggCare : Bee
     {
-        private Bee queen;
-        public override float CostPerShift => 1.35f;
+        internal static int Count { get; private set; }
+        private Queen queen;
+        protected override float CostPerShift => 1.35f;
+        private const float CARE_PROGRESS_PER_SHIFT = 0.15f;
 
-        public EggCare(Bee queen) : base("Egg Care")
+        public EggCare(Queen queen) : base("Egg Care")
         {
             this.queen = queen;
+            Count++;
         }
 
         protected override void DoJob()
         {
-            throw new NotImplementedException();
+            queen.CareForEggs(CARE_PROGRESS_PER_SHIFT);
         }
     }
 }
