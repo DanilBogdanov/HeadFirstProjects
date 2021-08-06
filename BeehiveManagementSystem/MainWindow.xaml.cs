@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeehiveManagementSystem.bees;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,36 @@ namespace BeehiveManagementSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+        Queen queen;
         public MainWindow()
         {
             InitializeComponent();
+            SetComboBoxItemFromEnum();
+
+            queen = new Queen();
+            statusReport.Text = queen.StatusReport;
+        }
+
+        private void SetComboBoxItemFromEnum()
+        {
+            foreach (BeeType item in Enum.GetValues(typeof(BeeType)))
+            {
+                jobSelector.Items.Add(item);
+            }
+        }
+
+        private void Button_Click_WorkNextShift(object sender, RoutedEventArgs e)
+        {
+            queen.WorkTheNextShift();
+            statusReport.Text = queen.StatusReport;
+        }
+
+        private void Button_Click_AssignJob(object sender, RoutedEventArgs e)
+        {
+            BeeType type = (BeeType)Enum.Parse(typeof(BeeType), jobSelector.SelectedItem.ToString());
+            
+            queen.AssignBee(type);
+            statusReport.Text = queen.StatusReport;
         }
     }
 }

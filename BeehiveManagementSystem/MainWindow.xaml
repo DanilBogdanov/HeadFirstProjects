@@ -21,14 +21,12 @@
         <StackPanel Grid.Row="1" VerticalAlignment="Top" Margin="20">
             <ComboBox x:Name="jobSelector" FontSize="18" SelectedIndex="0" HorizontalAlignment="Stretch" VerticalAlignment="Top" 
                       Margin="0,0,0,20">
-                <ListBoxItem Content="Nectar Collector"/>
-                <ListBoxItem Content="Honey Manufacturer"/>
-                <ListBoxItem Content="Egg Care"/>
+                <!--initialize in constructor-->                
             </ComboBox>
-            <Button Content="Assign this job to a bee" FontSize="18px"/>
+            <Button Content="Assign this job to a bee" FontSize="18px" Click="Button_Click_AssignJob"/>
         </StackPanel>
         
-        <Button Content="Work the next shift" FontSize="18" Margin="20" Grid.Row="2" />
+        <Button Content="Work the next shift" FontSize="18" Margin="20" Grid.Row="2" Click="Button_Click_WorkNextShift" />
         
         <Label Content="Queen's Report" FontSize="18" Margin="20, 0"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
 

@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="bees\Bee.cs" />
+    <Compile Include="bees\BeeType.cs" />
     <Compile Include="bees\EggCare.cs" />
     <Compile Include="bees\HoneyManufacturer.cs" />
     <Compile Include="bees\NectarCollector.cs" />

@@ -9,12 +9,36 @@ namespace BeehiveManagementSystem.bees
         private const float HONEY_PER_UNASSIGNED_WORKER = 0.5f;
         private Bee[] _workers;
         private float _eggs;
-        private float _unassignedWorkers;
+        private float _unassignedWorkers = 3;
+        public string StatusReport { get; private set; }
 
         public Queen() : base("Queen")
         {
             _workers = new Bee[0];
-            _unassignedWorkers = 3;
+            AssignBee(BeeType.EggCare);
+            AssignBee(BeeType.HoneyManufacturer);
+            AssignBee(BeeType.NectarCollector);
+
+            UpdateStatusReport();
+        }
+
+        internal void AssignBee(BeeType type)
+        {
+            if (_unassignedWorkers >= 1)
+            {
+                switch (type)
+                {
+                    case BeeType.EggCare:
+                        AddWorkers(new EggCare(this));
+                        break;
+                    case BeeType.NectarCollector:
+                        AddWorkers(new NectarCollector());
+                        break;
+                    case BeeType.HoneyManufacturer:
+                        AddWorkers(new HoneyManufacturer());
+                        break;
+                }
+            }
         }
 
         protected override void DoJob()
@@ -28,36 +52,19 @@ namespace BeehiveManagementSystem.bees
 
             HoneyVault.ConsumerHoney(HONEY_PER_UNASSIGNED_WORKER * _unassignedWorkers);
             UpdateStatusReport();
-            
         }
+
 
         private void AddWorkers(Bee worker)
         {
-            if (_unassignedWorkers >= 1)
-            {
-                _unassignedWorkers--;
-                Array.Resize(ref _workers, _workers.Length + 1);
-                _workers[_workers.Length - 1] = worker;
-            }
+            _unassignedWorkers--;
+            Array.Resize(ref _workers, _workers.Length + 1);
+            _workers[_workers.Length - 1] = worker;
+            UpdateStatusReport();
         }
 
-        private void AssignBee(string job)
-        {
-            switch (job)
-            {
-                case "Egg Care":
-                    AddWorkers(new bees.EggCare(this));
-                    break;
-                case "Nectar Collector":
-                    AddWorkers(new bees.NectarCollector());
-                    break;
-                case "Honey Manufacturer":
-                    AddWorkers(new bees.NectarCollector());
-                    break;
-            }
-        }
 
-        internal void CareForEggs(float eggsToConvert) 
+        internal void CareForEggs(float eggsToConvert)
         {
             if (_eggs > eggsToConvert)
             {
@@ -75,13 +82,14 @@ namespace BeehiveManagementSystem.bees
         {
             string result = HoneyVault.StatusReport;
 
-            
             result += $"\n\nEgg count: {_eggs}" +
                       $"\nUnassigned workers: {_unassignedWorkers}" +
                       $"\n{NectarCollector.Count} Nectar Collector bee" +
                       $"\n{HoneyManufacturer.Count} Honey Manufacturer bee" +
                       $"\n{EggCare.Count} Egg Care bee" +
                       $"\nTOTAL WORKERS: {_workers.Length}";
+
+            StatusReport = result;
         }
     }
 }
