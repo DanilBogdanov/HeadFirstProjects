@@ -16,9 +16,9 @@ namespace BeehiveManagementSystem
         {
             get
             {
-                string result = string.Format($"Vault report:\n" +
-                    $"{honey} units of honey" +
-                    $"{nectar} units of nectar");
+                string result = string.Format($"Vault report:" +
+                    $"\n{honey} units of honey" +
+                    $"\n{nectar} units of nectar");
 
                 if (nectar < LOW_LEVEL_WARNING)
                 {
@@ -30,7 +30,7 @@ namespace BeehiveManagementSystem
                 }
                 return result;
             }            
-        }
+        } 
 
         internal static void CollectNectar(float amount)
         {
