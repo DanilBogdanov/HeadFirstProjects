@@ -6,4 +6,9 @@
     <LangVersion>default</LangVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+    <PackageReference Include="WebDriver.ChromeDriver" Version="26.14.313457.1" />
+  </ItemGroup>
+
 </Project>

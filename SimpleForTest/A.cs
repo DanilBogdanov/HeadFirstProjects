@@ -9,7 +9,7 @@ namespace SimpleForTest
     abstract class A
     {
         public static int count = 0;
-        public void MPub()
+        public virtual void MPub()
         {
 
         }
@@ -19,7 +19,7 @@ namespace SimpleForTest
 
         }
 
-        private void MPriv()
+        private  void MPriv()
         {
 
         }
