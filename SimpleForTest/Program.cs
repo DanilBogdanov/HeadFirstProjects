@@ -1,5 +1,8 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using System;
 using System.Reflection;
+
 
 namespace SimpleForTest
 {
@@ -7,12 +10,8 @@ namespace SimpleForTest
     {
         static void Main(string[] args)
         {
-            C c = new();
-            B b = new();
-            C.count = 2;
-            B.count = 5;
-            Console.WriteLine($"C.count={C.count}");
-            Console.WriteLine($"B.count={B.count}");
+            IWebDriver driver = new ChromeDriver();
+            driver.Navigate().GoToUrl("https://www.bagira-ufa.ru/");
         }
     }
 }
