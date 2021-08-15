@@ -4,17 +4,18 @@ namespace BeehiveManagementSystem.bees
 {
     class Queen : Bee
     {
-        protected override float CostPerShift => 2.15f;
         private const float EGGS_PER_SHIFT = 0.45f;
         private const float HONEY_PER_UNASSIGNED_WORKER = 0.5f;
-        private Bee[] _workers;
+
+        //private Bee[] _workers = new Bee[0];
+        private IWorker[] _workers = new IWorker[0];
         private float _eggs;
         private float _unassignedWorkers = 3;
+        protected override float CostPerShift => 2.15f;
         public string StatusReport { get; private set; }
 
         public Queen() : base("Queen")
         {
-            _workers = new Bee[0];
             AssignBee(BeeType.EggCare);
             AssignBee(BeeType.HoneyManufacturer);
             AssignBee(BeeType.NectarCollector);
@@ -45,9 +46,9 @@ namespace BeehiveManagementSystem.bees
         {
             _eggs += EGGS_PER_SHIFT;
 
-            foreach (Bee bee in _workers)
+            foreach (IWorker worker in _workers)
             {
-                bee.WorkTheNextShift();
+                worker.WorkTheNextShift();
             }
 
             HoneyVault.ConsumerHoney(HONEY_PER_UNASSIGNED_WORKER * _unassignedWorkers);
@@ -55,7 +56,7 @@ namespace BeehiveManagementSystem.bees
         }
 
 
-        private void AddWorkers(Bee worker)
+        private void AddWorkers(IWorker worker)
         {
             _unassignedWorkers--;
             Array.Resize(ref _workers, _workers.Length + 1);
@@ -82,8 +83,8 @@ namespace BeehiveManagementSystem.bees
         {
             string result = HoneyVault.StatusReport;
 
-            result += $"\n\nEgg count: {_eggs}" +
-                      $"\nUnassigned workers: {_unassignedWorkers}" +
+            result += $"\n\nEgg count: {_eggs:0.0}" +
+                      $"\nUnassigned workers: {_unassignedWorkers:0.0}" +
                       $"\n{NectarCollector.Count} Nectar Collector bee" +
                       $"\n{HoneyManufacturer.Count} Honey Manufacturer bee" +
                       $"\n{EggCare.Count} Egg Care bee" +

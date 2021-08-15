@@ -16,6 +16,7 @@
             <RowDefinition Height="4*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="20" Content="↺" Click="Button_OnClick_Restart"></Button>
         <Label Content="Job Assignments" FontSize="18" Margin="20, 0" HorizontalAlignment="Center"  VerticalAlignment="Bottom"/>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Top" Margin="20">
