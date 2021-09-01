@@ -3,10 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:BeehiveManagementSystem"
+        xmlns:local="clr-namespace:BeehiveManagementSystem" xmlns:local1="clr-namespace:BeehiveManagementSystem.bees"
         mc:Ignorable="d"
         Title="Beehive Management System" Height="325" Width="625">
-    <Grid>
+    <Window.Resources>
+        <local1:Queen x:Key="queen"/>
+    </Window.Resources>
+    <Grid DataContext="{StaticResource queen}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
@@ -31,6 +34,6 @@
         
         <Label Content="Queen's Report" FontSize="18" Margin="20, 0"  Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
 
-        <TextBox x:Name="statusReport" IsReadOnly="True" Grid.Row="1" Grid.Column="1" Grid.RowSpan ="2" Margin="20"/>
+        <TextBox  Text="{Binding StatusReport, Mode=OneWay}" x:Name="statusReport" IsReadOnly="True" Grid.Row="1" Grid.Column="1" Grid.RowSpan ="2" Margin="20"/>
     </Grid>
 </Window>

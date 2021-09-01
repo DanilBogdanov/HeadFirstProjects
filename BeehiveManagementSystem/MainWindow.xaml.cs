@@ -23,15 +23,15 @@ namespace BeehiveManagementSystem
     public partial class MainWindow : Window
     {
         private DispatcherTimer timer = new DispatcherTimer();
-        Queen queen;
+        private readonly Queen queen;
 
         public MainWindow()
         {
             InitializeComponent();
             SetComboBoxItemFromEnum();
 
-            queen = new Queen();
-            statusReport.Text = queen.StatusReport;
+            queen = Resources["queen"] as Queen;
+            //statusReport.Text = queen.StatusReport;
             timer.Tick += TimerOnTick;
             timer.Interval = TimeSpan.FromSeconds(1.5);
             timer.Start();
@@ -53,7 +53,7 @@ namespace BeehiveManagementSystem
         private void WorkShift()
         {
             queen.WorkTheNextShift();
-            statusReport.Text = queen.StatusReport;
+            //statusReport.Text = queen.StatusReport;
         }
 
         private void Button_Click_WorkNextShift(object sender, RoutedEventArgs e)
@@ -66,14 +66,14 @@ namespace BeehiveManagementSystem
             BeeType type = (BeeType) Enum.Parse(typeof(BeeType), jobSelector.SelectedItem.ToString());
 
             queen.AssignBee(type);
-            statusReport.Text = queen.StatusReport;
+            //statusReport.Text = queen.StatusReport;
         }
 
         //todo refresh counts of bees class and refresh vault
         private void Button_OnClick_Restart(object sender, RoutedEventArgs e)
         {
-            queen = new Queen();
-            statusReport.Text = queen.StatusReport;
+            //queen = new Queen();
+            //statusReport.Text = queen.StatusReport;
         }
     }
 }

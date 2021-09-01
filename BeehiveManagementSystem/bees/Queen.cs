@@ -1,8 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
 
 namespace BeehiveManagementSystem.bees
 {
-    class Queen : Bee
+    class Queen : Bee, INotifyPropertyChanged
     {
         private const float EGGS_PER_SHIFT = 0.45f;
         private const float HONEY_PER_UNASSIGNED_WORKER = 0.5f;
@@ -11,6 +12,14 @@ namespace BeehiveManagementSystem.bees
         private IWorker[] _workers = new IWorker[0];
         private float _eggs;
         private float _unassignedWorkers = 3;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected void OnPropertyChanged(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
         protected override float CostPerShift => 2.15f;
         public string StatusReport { get; private set; }
 
@@ -91,6 +100,7 @@ namespace BeehiveManagementSystem.bees
                       $"\nTOTAL WORKERS: {_workers.Length}";
 
             StatusReport = result;
+            OnPropertyChanged("StatusReport");
         }
     }
 }
