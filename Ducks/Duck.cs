@@ -6,9 +6,24 @@ using System.Threading.Tasks;
 
 namespace Ducks
 {
-    class Duck
+    class Duck : IComparable<Duck>
     {
         public int Size { get; set; }
         public KindOfDuck Kind { get; set; }
+        public int CompareTo(Duck other)
+        {
+            if (this.Size > other.Size)
+            {
+                return 1;
+            }
+            else if (this.Size < other.Size)
+            {
+                return -1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }

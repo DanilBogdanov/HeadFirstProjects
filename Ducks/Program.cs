@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.VisualBasic;
 
 namespace Ducks
 {
@@ -17,6 +18,7 @@ namespace Ducks
                 new Duck() {Kind = KindOfDuck.Loon, Size = 13},
             };
 
+            ducks.Sort();
             PrintDucks(ducks);
         }
 
