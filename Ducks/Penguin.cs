@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ducks
 {
-    class Duck : Bird
+    class Penguin : Bird
     {
-        public int Size { get; set; }
-        public KindOfDuck Kind { get; set; }
     }
 }

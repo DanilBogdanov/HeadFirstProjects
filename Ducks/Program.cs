@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Ducks
 {
@@ -17,6 +18,10 @@ namespace Ducks
                 new Duck() {Kind = KindOfDuck.Loon, Size = 13},
             };
 
+            IEnumerable<Bird> upcastDuck = ducks;
+            Bird.FlyAway(upcastDuck.ToList(), "Usa");
+
+            ducks.Sort(new DuckComparerBySize());
             PrintDucks(ducks);
         }
 
