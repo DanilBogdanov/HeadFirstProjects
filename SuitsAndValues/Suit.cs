@@ -2,9 +2,9 @@ namespace SuitsAndValues
 {
     public enum Suit
     {
-        Spades,
-        Clubs,
         Diamonds,
+        Clubs,
         Hearts,
+        Spades,
     }
 }
