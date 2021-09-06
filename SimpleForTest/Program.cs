@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
 
@@ -10,8 +11,15 @@ namespace SimpleForTest
     {
         static void Main(string[] args)
         {
-            IWebDriver driver = new ChromeDriver();
-            driver.Navigate().GoToUrl("https://www.bagira-ufa.ru/");
+            Dictionary<string, int> dictionary = new Dictionary<string, int>();
+            dictionary["one"] = 1;
+            dictionary.Add("two", 2);
+            int[] arr = new int [5];
+            
+            foreach (KeyValuePair<string, int> pair in dictionary) 
+            {
+                Console.WriteLine(pair.Key + " - " + pair.Value);
+            }
         }
     }
 }
