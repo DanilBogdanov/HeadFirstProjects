@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 
@@ -11,14 +12,30 @@ namespace SimpleForTest
     {
         static void Main(string[] args)
         {
-            Dictionary<string, int> dictionary = new Dictionary<string, int>();
-            dictionary["one"] = 1;
-            dictionary.Add("two", 2);
-            int[] arr = new int [5];
+            int[] aInt = { 1, 2, 3, 4 };
+            int[] bInt = { 1, 5, 6, 4 };
             
-            foreach (KeyValuePair<string, int> pair in dictionary) 
+
+            Person[] persons = { new Person() { Name = "A", Age = 10 },
+                new Person() {Name = "B", Age = 20 } };
+
+            var item = from u in persons
+                       orderby u.Name descending, u.Age descending
+                       select u;
+            //printCol(item);
+            //Console.WriteLine("--------");
+            var i = persons.OrderBy(u => u.Name);
+            //printCol(i);
+            //Console.WriteLine("--------");
+            //printCol(aInt.Except(bInt));
+            Console.WriteLine(persons.Max(u => u.Age));
+        }
+
+        private static void printCol(System.Collections.IEnumerable en)
+        {
+            foreach (var item in en)
             {
-                Console.WriteLine(pair.Key + " - " + pair.Value);
+                Console.WriteLine(item);
             }
         }
     }
